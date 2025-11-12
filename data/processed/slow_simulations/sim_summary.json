@@ -1,0 +1,33 @@
+{
+  "records": 84,
+  "products": [
+    {
+      "product_id": "SKU-001",
+      "total_projected_demand": 492.0295508220315,
+      "total_realized_demand": 342.5798716634376,
+      "total_lost_sales": 149.44967915859397,
+      "total_orders": 360.0
+    },
+    {
+      "product_id": "SKU-002",
+      "total_projected_demand": 286.053502360998,
+      "total_realized_demand": 179.35610455314148,
+      "total_lost_sales": 106.69739780785648,
+      "total_orders": 168.0
+    },
+    {
+      "product_id": "SKU-003",
+      "total_projected_demand": 624.6349686715225,
+      "total_realized_demand": 327.23356695307467,
+      "total_lost_sales": 297.4014017184479,
+      "total_orders": 300.0
+    },
+    {
+      "product_id": "SKU-004",
+      "total_projected_demand": 198.19592041414586,
+      "total_realized_demand": 85.99999999999999,
+      "total_lost_sales": 112.19592041414586,
+      "total_orders": 56.0
+    }
+  ]
+}

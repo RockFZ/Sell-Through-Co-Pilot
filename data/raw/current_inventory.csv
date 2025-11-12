@@ -1,0 +1,7 @@
+product_id,on_hand_units,on_order_units,reserved_units,warehouse
+SKU-001,220,48,18,WH-LA
+SKU-002,140,24,12,WH-LA
+SKU-003,260,60,22,WH-LA
+SKU-004,95,16,9,WH-LA
+
+

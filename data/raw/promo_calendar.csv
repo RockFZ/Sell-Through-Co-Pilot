@@ -1,0 +1,7 @@
+promo_id,start_date,end_date,product_id,discount_pct,description
+PROMO-NEWYEAR,2025-01-10,2025-01-12,SKU-001,0.15,New Year flash sale
+PROMO-NEWYEAR,2025-01-10,2025-01-12,SKU-003,0.10,New Year flash sale
+PROMO-WINTER,2025-01-18,2025-01-21,SKU-002,0.20,Winter clearance
+PROMO-WINTER,2025-01-18,2025-01-21,SKU-004,0.12,Winter clearance
+
+

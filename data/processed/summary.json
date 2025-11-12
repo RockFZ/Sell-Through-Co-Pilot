@@ -1,0 +1,74 @@
+{
+  "daily_demand": {
+    "rows": 56,
+    "columns": [
+      "date",
+      "product_id",
+      "channel",
+      "units_sold"
+    ]
+  },
+  "product_features": {
+    "rows": 4,
+    "columns": [
+      "product_id",
+      "sku",
+      "name",
+      "category",
+      "unit_cost",
+      "unit_price",
+      "case_pack",
+      "min_inventory",
+      "max_inventory",
+      "avg_daily_units",
+      "std_daily_units",
+      "max_daily_units",
+      "min_daily_units",
+      "total_units_returned",
+      "supplier_id",
+      "supplier_name",
+      "avg_lead_time_days",
+      "lead_time_std_days",
+      "min_order_qty",
+      "on_hand_units",
+      "on_order_units",
+      "reserved_units",
+      "warehouse",
+      "return_rate",
+      "safety_stock_units"
+    ]
+  },
+  "expanded_promos": {
+    "rows": 14,
+    "columns": [
+      "date",
+      "product_id",
+      "promo_id",
+      "discount_pct",
+      "description"
+    ]
+  },
+  "simulation_schedule": {
+    "rows": 120,
+    "columns": [
+      "date",
+      "product_id",
+      "forecast_units",
+      "promo_id",
+      "planned_discount",
+      "description",
+      "sku",
+      "name",
+      "category",
+      "unit_cost",
+      "unit_price",
+      "avg_lead_time_days",
+      "lead_time_std_days",
+      "min_order_qty",
+      "on_hand_units",
+      "on_order_units",
+      "reserved_units",
+      "safety_stock_units"
+    ]
+  }
+}

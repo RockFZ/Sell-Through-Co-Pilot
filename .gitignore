@@ -1,0 +1,16 @@
+# macOS & environment artifacts
+.DS_Store
+.venv/
+
+# IDE / editor temps
+*.pyc
+__pycache__/
+
+# Local media/demo captures (kept outside of repo)
+*.mov
+*.m4a
+*.png
+
+# Misc archives or generated files
+*.rtf
+

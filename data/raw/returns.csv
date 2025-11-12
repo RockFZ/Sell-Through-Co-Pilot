@@ -1,0 +1,9 @@
+date,product_id,units_returned,reason
+2025-01-05,SKU-001,2,Sizing
+2025-01-05,SKU-003,1,Defective
+2025-01-07,SKU-002,1,Sizing
+2025-01-08,SKU-004,1,Damaged
+2025-01-10,SKU-003,2,Defective
+2025-01-12,SKU-001,1,Changed Mind
+
+

@@ -1,0 +1,7 @@
+product_id,supplier_id,supplier_name,avg_lead_time_days,lead_time_std_days,min_order_qty
+SKU-001,SUP-FAST-WEAR,FastWear Manufacturing,6,1.5,48
+SKU-002,SUP-FAST-WEAR,FastWear Manufacturing,8,2.0,24
+SKU-003,SUP-POWERMAX,PowerMax Electronics,9,2.5,40
+SKU-004,SUP-MOBSAFE,Mobility Safety Co,12,3.0,16
+
+
