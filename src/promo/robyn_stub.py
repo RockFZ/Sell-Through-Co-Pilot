@@ -59,6 +59,7 @@ def build_lift_table(
     products: pd.Index,
     horizon_dates: pd.DatetimeIndex,
     config: RobynStubConfig | None = None,
+    historical_sales: pd.DataFrame | None = None,  # For compatibility
 ) -> pd.DataFrame:
     """
     Build a table of lift multipliers per product-date pair.

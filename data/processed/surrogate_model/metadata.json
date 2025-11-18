@@ -1,0 +1,39 @@
+{
+  "feature_names": [
+    "unit_cost",
+    "unit_price",
+    "case_pack",
+    "min_inventory",
+    "max_inventory",
+    "avg_daily_units",
+    "std_daily_units",
+    "avg_lead_time_days",
+    "lead_time_std_days",
+    "min_order_qty",
+    "on_hand_units",
+    "on_order_units",
+    "reserved_units",
+    "return_rate",
+    "avg_discount",
+    "max_discount",
+    "total_discount",
+    "promo_days",
+    "total_ad_spend",
+    "avg_daily_ad_spend",
+    "on_hand_start"
+  ],
+  "target_names": [
+    "realized_demand",
+    "lost_sales",
+    "service_level",
+    "lost_sales_rate",
+    "order_qty"
+  ],
+  "is_fitted": true,
+  "config": {
+    "use_gpu": true,
+    "n_estimators": 100,
+    "max_depth": 6,
+    "learning_rate": 0.1
+  }
+}

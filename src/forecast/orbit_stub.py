@@ -59,6 +59,7 @@ def forecast_product(
 def forecast_bundle(
     daily_demand: pd.DataFrame,
     config: OrbitStubConfig | None = None,
+    **kwargs,  # For compatibility with orbit_integration signature
 ) -> Dict[str, pd.DataFrame]:
     """
     Generate a dictionary of forecasts keyed by product_id.

@@ -1,0 +1,231 @@
+[2025-11-17 19:42:53] [INFO] 
+[2025-11-17 19:42:53] [INFO] ================================================================================
+[2025-11-17 19:42:53] [INFO]   SELL-THROUGH CO-PILOT - FULL PIPELINE RUN
+[2025-11-17 19:42:53] [INFO] ================================================================================
+[2025-11-17 19:42:53] [INFO] Started at: 2025-11-17 19:42:53
+[2025-11-17 19:42:53] [INFO] Log file: data/processed/pipeline_run.log
+[2025-11-17 19:42:53] [INFO] Horizon days: 21
+[2025-11-17 19:42:53] [INFO] Use GPU: True
+[2025-11-17 19:42:53] [INFO] 
+[2025-11-17 19:42:53] [INFO] ================================================================================
+[2025-11-17 19:42:53] [INFO]   STEP 1: Data Pipeline
+[2025-11-17 19:42:53] [INFO] ================================================================================
+[2025-11-17 19:42:54] [INFO] Loading raw data...
+[2025-11-17 19:42:54] [INFO]   Loaded 7 raw datasets
+[2025-11-17 19:42:54] [INFO] Building planning snapshot...
+[2025-11-17 19:42:54] [INFO]   Daily demand: 56 records
+[2025-11-17 19:42:54] [INFO]   Product features: 4 products
+[2025-11-17 19:42:54] [INFO] Preparing simulation inputs...
+[2025-11-17 19:42:54] [INFO]   Expanded promos: 14 records
+[2025-11-17 19:42:54] [INFO]   Simulation schedule: 120 records
+[2025-11-17 19:42:54] [INFO] ✓ Data pipeline completed in 0.04 seconds
+[2025-11-17 19:42:54] [INFO] 
+Pipeline Summary:
+[2025-11-17 19:42:54] [INFO] {
+  "daily_demand": {
+    "rows": 56,
+    "columns": [
+      "date",
+      "product_id",
+      "channel",
+      "units_sold"
+    ]
+  },
+  "product_features": {
+    "rows": 4,
+    "columns": [
+      "product_id",
+      "sku",
+      "name",
+      "category",
+      "unit_cost",
+      "unit_price",
+      "case_pack",
+      "min_inventory",
+      "max_inventory",
+      "avg_daily_units",
+      "std_daily_units",
+      "max_daily_units",
+      "min_daily_units",
+      "total_units_returned",
+      "supplier_id",
+      "supplier_name",
+      "avg_lead_time_days",
+      "lead_time_std_days",
+      "min_order_qty",
+      "on_hand_units",
+      "on_order_units",
+      "reserved_units",
+      "warehouse",
+      "return_rate",
+      "safety_stock_units"
+    ]
+  },
+  "expanded_promos": {
+    "rows": 14,
+    "columns": [
+      "date",
+      "product_id",
+      "promo_id",
+      "discount_pct",
+      "description"
+    ]
+  },
+  "simulation_schedule": {
+    "rows": 120,
+    "columns": [
+      "date",
+      "product_id",
+      "forecast_units",
+      "promo_id",
+      "planned_discount",
+      "description",
+      "sku",
+      "name",
+      "category",
+      "unit_cost",
+      "unit_price",
+      "avg_lead_time_days",
+      "lead_time_std_days",
+      "min_order_qty",
+      "on_hand_units",
+      "on_order_units",
+      "reserved_units",
+      "safety_stock_units"
+    ]
+  }
+}
+[2025-11-17 19:42:54] [INFO] 
+[2025-11-17 19:42:54] [INFO] ================================================================================
+[2025-11-17 19:42:54] [INFO]   STEP 2: Slow Simulation
+[2025-11-17 19:42:54] [INFO] ================================================================================
+[2025-11-17 19:42:54] [INFO] Running simulation for 21 days...
+[2025-11-17 19:42:54] [INFO] ✓ Simulation completed in 0.04 seconds
+[2025-11-17 19:42:54] [INFO]   Records: 84
+[2025-11-17 19:42:54] [INFO]   Products: 4
+[2025-11-17 19:42:54] [INFO] 
+Simulation Summary:
+[2025-11-17 19:42:54] [INFO] {
+  "records": 84,
+  "products": [
+    {
+      "product_id": "SKU-001",
+      "total_projected_demand": 587.0857485539959,
+      "total_realized_demand": 393.2044784459531,
+      "total_lost_sales": 193.88127010804283,
+      "total_orders": 384.0
+    },
+    {
+      "product_id": "SKU-002",
+      "total_projected_demand": 337.8514265206065,
+      "total_realized_demand": 205.34150439754376,
+      "total_lost_sales": 132.50992212306272,
+      "total_orders": 168.0
+    },
+    {
+      "product_id": "SKU-003",
+      "total_projected_demand": 750.4115975905785,
+      "total_realized_demand": 378.0,
+      "total_lost_sales": 372.4115975905785,
+      "total_orders": 420.0
+    },
+    {
+      "product_id": "SKU-004",
+      "total_projected_demand": 244.91663479444765,
+      "total_realized_demand": 86.0,
+      "total_lost_sales": 158.91663479444765,
+      "total_orders": 112.0
+    }
+  ]
+}
+[2025-11-17 19:42:54] [INFO] 
+Sample Simulation Log (first 5 rows):
+[2025-11-17 19:42:54] [INFO]   product_id       date  on_hand_start  inbound_units  realized_demand  projected_demand  lost_sales  on_hand_end  backlog_units  order_qty  safety_stock_units
+0    SKU-001 2025-01-15     220.000000            0.0        23.377855         23.377855         0.0   196.622145            0.0        0.0          121.285714
+1    SKU-001 2025-01-16     196.622145            0.0        20.231602         20.231602         0.0   176.390543            0.0        0.0          121.285714
+2    SKU-001 2025-01-17     176.390543            0.0        26.042858         26.042858         0.0   150.347684            0.0        0.0          121.285714
+3    SKU-001 2025-01-18     150.347684            0.0        25.882442         25.882442         0.0   124.465243            0.0        0.0          121.285714
+4    SKU-001 2025-01-19     124.465243            0.0        21.312878         21.312878         0.0   103.152365            0.0        0.0          121.285714
+[2025-11-17 19:42:54] [INFO] 
+[2025-11-17 19:42:54] [INFO] ================================================================================
+[2025-11-17 19:42:54] [INFO]   STEP 3: Surrogate Model Training
+[2025-11-17 19:42:54] [INFO] ================================================================================
+[2025-11-17 19:42:54] [INFO] Loading simulation logs and features...
+[2025-11-17 19:42:54] [INFO]   Loaded 84 simulation records
+[2025-11-17 19:42:55] [INFO]   Products: 4
+[2025-11-17 19:42:55] [INFO]   Training with GPU: True
+[2025-11-17 19:42:55] [INFO] ✓ Model training completed in 0.31 seconds
+[2025-11-17 19:42:55] [INFO] 
+Training Metrics:
+[2025-11-17 19:42:55] [INFO] {
+  "realized_demand": {
+    "mae": 2.268563923893538,
+    "rmse": 2.268563923893538,
+    "r2": NaN,
+    "n_train": 3,
+    "n_test": 1
+  },
+  "lost_sales": {
+    "mae": 76.79792499960203,
+    "rmse": 76.79792499960203,
+    "r2": NaN,
+    "n_train": 3,
+    "n_test": 1
+  },
+  "service_level": {
+    "mae": 0.13552579651044083,
+    "rmse": 0.13552579651044083,
+    "r2": NaN,
+    "n_train": 3,
+    "n_test": 1
+  },
+  "lost_sales_rate": {
+    "mae": 0.14647563819217574,
+    "rmse": 0.14647563819217574,
+    "r2": NaN,
+    "n_train": 3,
+    "n_test": 1
+  },
+  "order_qty": {
+    "mae": 56.56,
+    "rmse": 56.56,
+    "r2": NaN,
+    "n_train": 3,
+    "n_test": 1
+  }
+}
+[2025-11-17 19:42:55] [INFO] ✓ Model saved to /Users/zhufucheng/Desktop/EE542/Final Project/Milestone2/data/processed/surrogate_model
+[2025-11-17 19:42:55] [INFO] 
+[2025-11-17 19:42:55] [INFO] ================================================================================
+[2025-11-17 19:42:55] [INFO]   STEP 4: Dashboard Creation
+[2025-11-17 19:42:55] [INFO] ================================================================================
+[2025-11-17 19:42:55] [INFO] Loading trained model...
+[2025-11-17 19:42:55] [INFO]   Model targets: ['realized_demand', 'lost_sales', 'service_level', 'lost_sales_rate', 'order_qty']
+[2025-11-17 19:42:55] [INFO] Loading product features and planning data...
+[2025-11-17 19:42:55] [INFO] Preparing features and generating predictions...
+[2025-11-17 19:42:55] [INFO] ✓ Generated predictions for 4 products
+[2025-11-17 19:42:55] [INFO] Creating dashboard...
+[2025-11-17 19:42:55] [INFO] ✓ Dashboard saved to /Users/zhufucheng/Desktop/EE542/Final Project/Milestone2/data/processed/dashboard.json
+[2025-11-17 19:42:55] [INFO] 
+Dashboard Summary:
+[2025-11-17 19:42:55] [INFO]   Overall Status: RED
+[2025-11-17 19:42:55] [INFO]   Products:
+[2025-11-17 19:42:55] [INFO]     🔴 Red Tech Tee XS (SKU-001): red
+[2025-11-17 19:42:55] [INFO]       Service Level: 60.1%
+[2025-11-17 19:42:55] [INFO]       Lost Sales Rate: 39.9%
+[2025-11-17 19:42:55] [INFO]     🔴 Black Travel Jacket M (SKU-002): red
+[2025-11-17 19:42:55] [INFO]       Service Level: 47.2%
+[2025-11-17 19:42:55] [INFO]       Lost Sales Rate: 53.9%
+[2025-11-17 19:42:55] [INFO]     🔴 PowerPack 10K Charger (SKU-003): red
+[2025-11-17 19:42:55] [INFO]       Service Level: 52.5%
+[2025-11-17 19:42:55] [INFO]       Lost Sales Rate: 47.5%
+[2025-11-17 19:42:55] [INFO]     🔴 Smart Commute Helmet (SKU-004): red
+[2025-11-17 19:42:55] [INFO]       Service Level: 41.4%
+[2025-11-17 19:42:55] [INFO]       Lost Sales Rate: 58.6%
+[2025-11-17 19:42:55] [INFO] 
+[2025-11-17 19:42:55] [INFO] ================================================================================
+[2025-11-17 19:42:55] [INFO]   PIPELINE COMPLETE
+[2025-11-17 19:42:55] [INFO] ================================================================================
+[2025-11-17 19:42:55] [INFO] Total execution time: 2.06 seconds
+[2025-11-17 19:42:55] [INFO] Completed at: 2025-11-17 19:42:55
+[2025-11-17 19:42:55] [INFO] ✓ All steps completed successfully!

@@ -1,5 +1,23 @@
 pandas>=2.2.0
 pyarrow>=15.0.0
 PyPDF2>=3.0.1
+numpy>=1.22.4
+requests>=2.28.0
+openpyxl>=3.0.0  # For Excel file support
+scikit-learn>=1.0.0  # For surrogate model fallback
+
+# Surrogate model (XGBoost with GPU support)
+# Install with GPU: pip install xgboost --upgrade
+# Or CPU only: pip install xgboost
+xgboost>=2.0.0  # For GPU-accelerated surrogate model training
+
+# Optional: Real Orbit integration (uncomment to use real Orbit)
+# orbit-ml>=1.1.0
+
+# Optional: Real Robyn integration (uncomment to use real Robyn)
+# robyn>=0.11.0
+# prophet>=1.1.0  # Robyn dependency
+
+# Optional: kaggle>=1.5.12  # Uncomment if using Kaggle datasets
 
 

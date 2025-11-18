@@ -1,0 +1,44 @@
+{
+  "readiness": {
+    "overall_status": "red",
+    "products": [
+      {
+        "product_id": "SKU-001",
+        "name": "Red Tech Tee XS",
+        "status": "red",
+        "service_level": 0.6012330787712707,
+        "lost_sales_rate": 0.3987669212287287,
+        "predicted_realized_demand": 361.9070005587888,
+        "predicted_lost_sales": 233.5817315256275
+      },
+      {
+        "product_id": "SKU-002",
+        "name": "Black Travel Jacket M",
+        "status": "red",
+        "service_level": 0.47226060981695533,
+        "lost_sales_rate": 0.5386892318647795,
+        "predicted_realized_demand": 203.07294047365022,
+        "predicted_lost_sales": 209.30784712266478
+      },
+      {
+        "product_id": "SKU-003",
+        "name": "PowerPack 10K Charger",
+        "status": "red",
+        "service_level": 0.5251269242388839,
+        "lost_sales_rate": 0.47487307576111604,
+        "predicted_realized_demand": 349.3770300425693,
+        "predicted_lost_sales": 307.86517636202046
+      },
+      {
+        "product_id": "SKU-004",
+        "name": "Smart Commute Helmet",
+        "status": "red",
+        "service_level": 0.4137872658911631,
+        "lost_sales_rate": 0.5862127341088375,
+        "predicted_realized_demand": 169.4324926290549,
+        "predicted_lost_sales": 199.05688835428552
+      }
+    ]
+  },
+  "risk_timeline": null
+}
