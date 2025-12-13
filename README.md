@@ -1,4 +1,4 @@
-# Sell-Through Co-Pilot — Milestone 2
+# Sell-Through Co-Pilot
 
 Inventory optimization system integrating **Uber Orbit** (demand forecasting), **Meta Robyn** (marketing mix modeling), and an **XGBoost surrogate model** for fast scenario analysis.
 
