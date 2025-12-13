@@ -1,51 +1,100 @@
-# Sell-Through Co-Pilot — Milestone 1
+# Sell-Through Co-Pilot — Milestone 2
 
-This repository contains the Milestone 1 deliverables for the **Sell-Through Co-Pilot** project. The focus of this milestone is on **data plumbing**—collecting raw operational inputs, validating schemas, and producing canonical tables that downstream forecasting, marketing mix, and simulation workflows can consume.
+Inventory optimization system integrating **Uber Orbit** (demand forecasting), **Meta Robyn** (marketing mix modeling), and an **XGBoost surrogate model** for fast scenario analysis.
 
-## Repo layout
+## Repository Structure
 
-- `data/raw/`: Synthetic source files for products, sales history, lead times, returns, promotions, ads, and inventory.
-- `data/processed/`: Generated Parquet tables after running the pipeline.
-- `src/`: Python package with config, validation, transformations, and simulation prep utilities.
-- `scripts/`: CLI entry points. `run_data_pipeline.py` executes the end-to-end data plumbing workflow.
-- `docs/`: Documentation and milestone notes (see `docs/milestone1_report.md`).
+- `data/raw/`: Raw CSV files (products, sales, promotions, inventory, etc.)
+- `data/processed/`: Processed Parquet tables and trained surrogate model
+- `src/`: Core Python package
+  - `forecast/`: Orbit integration for demand forecasting
+  - `promo/`: Robyn integration for promotional lift modeling
+  - `surrogate/`: XGBoost surrogate model for fast predictions
+  - `simulations/`: Inventory simulation engine
+  - `demo/`: Backend for Gradio demo interface
+- `scripts/`: CLI entry points for pipeline, training, and demo
+- `docs/`: Documentation and reports
 
-## Quick start
+## Quick Start
 
-Create a virtual environment (recommended) and install dependencies:
+### 1. Setup Environment
 
 ```bash
+# Create and activate conda environment (recommended)
+conda create -n DEMO python=3.11 -y
+conda activate DEMO
+
+# Or use virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
+
+# Install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Run the data pipeline, which will validate raw inputs, create processed artifacts, and emit a JSON summary:
-
+**Note for macOS:** Install OpenMP for XGBoost:
 ```bash
-python scripts/run_data_pipeline.py --output-summary data/processed/summary.json
+brew install libomp
 ```
 
-Key outputs:
+### 2. Prepare Data and Train Model
 
-- `data/processed/daily_demand.parquet`
-- `data/processed/product_features.parquet`
-- `data/processed/expanded_promos.parquet`
-- `data/processed/simulation_schedule.parquet`
-- `data/processed/summary.json`
+```bash
+# Run data pipeline to generate processed tables
+python scripts/run_data_pipeline.py --output-summary data/processed/summary.json
 
-Run the slow simulation to generate logged inventory outcomes using the Orbit/Robyn facsimiles and min-max reorder rules:
+# Run simulation to generate training data
+python scripts/run_slow_simulation.py --horizon-days 21
 
+# Train surrogate model
+python scripts/train_surrogate.py --use-gpu
+```
+
+### 3. Run the Demo
+
+```bash
+python scripts/run_gradio_demo.py
+```
+
+The demo will launch at `http://localhost:7860`. Open this URL in your browser to interact with the model.
+
+## Demo Features
+
+- **Product Selection**: Choose from available products
+- **Scenario Testing**: Adjust discount %, ad spend multiplier, and starting inventory
+- **Real-time Predictions**: See results in under 1 millisecond
+- **Model Transparency**: View features sent to the model
+- **Baseline Comparison**: Compare scenarios against baseline predictions
+
+## Key Workflows
+
+### Data Pipeline
+```bash
+python scripts/run_data_pipeline.py
+```
+Generates: `daily_demand.parquet`, `product_features.parquet`, `expanded_promos.parquet`
+
+### Simulation
 ```bash
 python scripts/run_slow_simulation.py --horizon-days 21
 ```
+Generates: `slow_simulations/sim_log.parquet` (training data)
 
-Simulation artifacts:
+### Model Training
+```bash
+python scripts/train_surrogate.py --use-gpu
+```
+Trains XGBoost models for: `realized_demand`, `lost_sales`, `service_level`, `lost_sales_rate`, `order_qty`
 
-- `data/processed/slow_simulations/sim_log.parquet`
-- `data/processed/slow_simulations/sim_summary.json`
+## Performance
 
-## Next steps
+- **Surrogate Model**: <1ms inference time
+- **Full Simulation**: ~12 seconds per scenario
+- **Speedup**: 12,000x faster than full simulation
 
-Milestone 2 (forecasting + promo lift prototypes) will consume the processed tables prepared here. The simulation schedule already includes baseline demand, promotion placeholders, lead-time statistics, and safety-stock hints to seed the slow engine and surrogate training efforts.
+## Documentation
 
+- Demo script: `docs/demo_script.md`
+- Milestone 2 report: `docs/milestone2_report.md`
+- Implementation details: `docs/milestone2_implementation.md`
